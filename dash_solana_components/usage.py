@@ -3,8 +3,7 @@ import dash
 
 app = dash.Dash(__name__)
 
-app.layout = dsc.DashSolanaComponents(id='component')
-# app.layout = dsc.App(id='component')
+app.layout = dsc.DashSolanaComponents(id='component', network='mainnet')
 
 if __name__ == '__main__':
     app.run_server(debug=True)

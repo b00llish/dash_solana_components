@@ -1,9 +1,9 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 #' @export
-dscApp <- function(id=NULL) {
+dscApp <- function(id=NULL, network=NULL) {
     
-    props <- list(id=id)
+    props <- list(id=id, network=network)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -11,7 +11,7 @@ dscApp <- function(id=NULL) {
         props = props,
         type = 'App',
         namespace = 'dash_solana_components',
-        propNames = c('id'),
+        propNames = c('id', 'network'),
         package = 'dashSolanaComponents'
         )
 

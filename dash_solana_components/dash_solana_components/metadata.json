@@ -1,8 +1,30 @@
 {
   "src/ts/components/App.tsx": {
     "displayName": "App",
-    "description": "Component description",
+    "description": "",
     "props": {
+      "network": {
+        "description": "",
+        "required": true,
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'devnet'",
+              "computed": false
+            },
+            {
+              "value": "'mainnet'",
+              "computed": false
+            },
+            {
+              "value": "'testnet'",
+              "computed": false
+            }
+          ],
+          "raw": "\"devnet\" | \"mainnet\" | \"testnet\""
+        }
+      },
       "id": {
         "description": "Unique ID to identify this component in Dash callbacks.",
         "required": false,
@@ -24,8 +46,30 @@
   },
   "src/ts/components/DashSolanaComponents.tsx": {
     "displayName": "DashSolanaComponents",
-    "description": "Component description",
+    "description": "",
     "props": {
+      "network": {
+        "description": "",
+        "required": true,
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'devnet'",
+              "computed": false
+            },
+            {
+              "value": "'mainnet'",
+              "computed": false
+            },
+            {
+              "value": "'testnet'",
+              "computed": false
+            }
+          ],
+          "raw": "\"devnet\" | \"mainnet\" | \"testnet\""
+        }
+      },
       "id": {
         "description": "Unique ID to identify this component in Dash callbacks.",
         "required": false,

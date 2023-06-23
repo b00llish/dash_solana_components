@@ -11,18 +11,26 @@ require('@solana/wallet-adapter-react-ui/styles.css');
 
 type Props = {
     // Insert props
+    network: 'devnet' | 'mainnet' | 'testnet';
 } & DashComponentProps;
 
 /**
  * Component description
  */
 
+const NETWORKS = {
+  'devnet': WalletAdapterNetwork.Devnet,
+  'mainnet': WalletAdapterNetwork.Mainnet,
+  'testnet': WalletAdapterNetwork.Testnet,
+};
+
 const App: (props: Props) => JSX.Element = (props: Props) => {
-    const { id } = props;
+    const { id, network } = props;
+    const networkValue = NETWORKS[network];
     return (
         <div id={id}>
             {
-                <Context>
+                <Context network={networkValue}>
             <Content />
         </Context>
             }
@@ -34,9 +42,9 @@ App["defaultProps"] = {};
 
 export default App;
 
-const Context: FC<{ children: ReactNode }> = ({ children }) => {
+const Context: FC<{ children: ReactNode, network: WalletAdapterNetwork }> = ({ children, network }) => {
     // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
-    const network = WalletAdapterNetwork.Devnet;
+    // const network = WalletAdapterNetwork.Devnet;
 
     // You can also provide a custom RPC endpoint.
     const endpoint = useMemo(() => clusterApiUrl(network), [network]);
