@@ -1,4 +1,27 @@
 {
+  "src/ts/components/App.tsx": {
+    "displayName": "App",
+    "description": "Component description",
+    "props": {
+      "id": {
+        "description": "Unique ID to identify this component in Dash callbacks.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "setProps": {
+        "description": "Update props to trigger callbacks.",
+        "required": true,
+        "type": {
+          "name": "func",
+          "raw": "(props: Record<string, any>) => void"
+        }
+      }
+    },
+    "isContext": false
+  },
   "src/ts/components/DashSolanaComponents.tsx": {
     "displayName": "DashSolanaComponents",
     "description": "Component description",

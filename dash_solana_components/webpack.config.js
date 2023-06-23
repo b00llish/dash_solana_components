@@ -39,6 +39,15 @@ module.exports = function (env, argv) {
         externals,
         resolve: {
             extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+            fallback: {
+              "stream": require.resolve("stream-browserify"), // Used for 'stream'
+              "crypto": require.resolve("crypto-browserify"), // Used for 'crypto'
+              "http": require.resolve("stream-http"), // Used for 'http'
+              "https": require.resolve("https-browserify"), // Used for 'https'
+              "assert": require.resolve("assert"), // Used for 'assert'
+               "url": require.resolve("url/"),
+                "zlib": require.resolve("browserify-zlib")
+            },
         },
         module: {
             rules: [
