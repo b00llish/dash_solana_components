@@ -1,21 +1,9 @@
 import dash_solana_components
-from dash import Dash, callback, html, Input, Output
+import dash
 
-app = Dash(__name__)
+app = dash.Dash(__name__)
 
-app.layout = html.Div([
-    dash_solana_components.DashSolanaComponents(
-        id='input',
-        value='my-value',
-        label='my-label'
-    ),
-    html.Div(id='output')
-])
-
-
-@callback(Output('output', 'children'), Input('input', 'value'))
-def display_output(value):
-    return 'You have entered {}'.format(value)
+app.layout = dash_solana_components.DashSolanaComponents(id='component')
 
 
 if __name__ == '__main__':

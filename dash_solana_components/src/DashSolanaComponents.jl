@@ -3,7 +3,7 @@ module DashSolanaComponents
 using Dash
 
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
-const version = "0.0.1"
+const version = "1.0.0"
 
 include("jl/dsc_dashsolanacomponents.jl")
 
@@ -15,15 +15,15 @@ function __init__()
             version = version,
             [
                 DashBase.Resource(
-    relative_package_path = "dash_solana_components.min.js",
-    external_url = "https://unpkg.com/dash_solana_components@0.0.1/dash_solana_components/dash_solana_components.min.js",
+    relative_package_path = "dash_solana_components.js",
+    external_url = "https://unpkg.com/dash_solana_components@1.0.0/dash_solana_components/dash_solana_components.js",
     dynamic = nothing,
     async = nothing,
     type = :js
 ),
 DashBase.Resource(
-    relative_package_path = "dash_solana_components.min.js.map",
-    external_url = "https://unpkg.com/dash_solana_components@0.0.1/dash_solana_components/dash_solana_components.min.js.map",
+    relative_package_path = "dash_solana_components.js.map",
+    external_url = "https://unpkg.com/dash_solana_components@1.0.0/dash_solana_components/dash_solana_components.js.map",
     dynamic = true,
     async = nothing,
     type = :js

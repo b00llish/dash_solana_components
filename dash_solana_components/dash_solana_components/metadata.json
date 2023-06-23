@@ -1,37 +1,25 @@
 {
-  "src/lib/components/DashSolanaComponents.react.js": {
-    "description": "ExampleComponent is an example component.\nIt takes a property, `label`, and\ndisplays it.\nIt renders an input with the property `value`\nwhich is editable by the user.",
+  "src/ts/components/DashSolanaComponents.tsx": {
     "displayName": "DashSolanaComponents",
-    "methods": [],
+    "description": "Component description",
     "props": {
       "id": {
-        "type": {
-          "name": "string"
-        },
+        "description": "Unique ID to identify this component in Dash callbacks.",
         "required": false,
-        "description": "The ID used to identify this component in Dash callbacks."
-      },
-      "label": {
         "type": {
-          "name": "string"
-        },
-        "required": true,
-        "description": "A label that will be printed when this component is rendered."
-      },
-      "value": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "The value displayed in the input."
+          "name": "string",
+          "raw": "string"
+        }
       },
       "setProps": {
+        "description": "Update props to trigger callbacks.",
+        "required": true,
         "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": "Dash-assigned callback that should be called to report property changes\nto Dash, to make them available for callbacks."
+          "name": "func",
+          "raw": "(props: Record<string, any>) => void"
+        }
       }
-    }
+    },
+    "isContext": false
   }
 }

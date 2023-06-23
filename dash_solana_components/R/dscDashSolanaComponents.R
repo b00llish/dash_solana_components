@@ -1,9 +1,9 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 #' @export
-dscDashSolanaComponents <- function(id=NULL, label=NULL, value=NULL) {
+dscDashSolanaComponents <- function(id=NULL) {
     
-    props <- list(id=id, label=label, value=value)
+    props <- list(id=id)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -11,7 +11,7 @@ dscDashSolanaComponents <- function(id=NULL, label=NULL, value=NULL) {
         props = props,
         type = 'DashSolanaComponents',
         namespace = 'dash_solana_components',
-        propNames = c('id', 'label', 'value'),
+        propNames = c('id'),
         package = 'dashSolanaComponents'
         )
 
