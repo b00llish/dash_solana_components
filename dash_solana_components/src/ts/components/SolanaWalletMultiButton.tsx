@@ -45,7 +45,7 @@ const SolanaWalletMultiButton: (props: Props) => JSX.Element = (props: Props) =>
     );
 };
 
-SolanaWalletMultiButton["defaultProps"] = {};
+SolanaWalletMultiButton["defaultProps"] = {network: 'mainnet'};
 
 export default SolanaWalletMultiButton;
 

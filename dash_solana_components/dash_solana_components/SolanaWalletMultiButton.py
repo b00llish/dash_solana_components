@@ -12,13 +12,13 @@ Keyword arguments:
 - id (string; optional):
     Unique ID to identify this component in Dash callbacks.
 
-- network (a value equal to: 'devnet', 'mainnet', 'testnet'; required)"""
+- network (a value equal to: 'devnet', 'mainnet', 'testnet'; default 'mainnet')"""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'dash_solana_components'
     _type = 'SolanaWalletMultiButton'
     @_explicitize_args
-    def __init__(self, network=Component.REQUIRED, id=Component.UNDEFINED, **kwargs):
+    def __init__(self, network=Component.UNDEFINED, id=Component.UNDEFINED, **kwargs):
         self._prop_names = ['id', 'network']
         self._valid_wildcard_attributes =            []
         self.available_properties = ['id', 'network']
@@ -27,10 +27,5 @@ Keyword arguments:
         _locals = locals()
         _locals.update(kwargs)  # For wildcard attrs and excess named props
         args = {k: _locals[k] for k in _explicit_args}
-
-        for k in ['network']:
-            if k not in args:
-                raise TypeError(
-                    'Required argument `' + k + '` was not specified.')
 
         super(SolanaWalletMultiButton, self).__init__(**args)

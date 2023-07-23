@@ -1,6 +1,6 @@
 Package: dashSolanaComponents
 Title: Solana React components for Dash.
-Version: 1.0.1
+Version: 1.0.2
 Description: Solana React components for Dash.
 Depends: R (>= 3.0.2)
 Imports: 

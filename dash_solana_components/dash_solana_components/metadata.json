@@ -5,7 +5,11 @@
     "props": {
       "network": {
         "description": "",
-        "required": true,
+        "required": false,
+        "defaultValue": {
+          "value": "'mainnet'",
+          "computed": false
+        },
         "type": {
           "name": "enum",
           "value": [
