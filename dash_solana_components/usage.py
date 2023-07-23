@@ -1,5 +1,6 @@
-import dash_solana_components as dsc
 import dash
+import dash_solana_components as dsc
+
 
 app = dash.Dash(__name__)
 

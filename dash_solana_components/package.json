@@ -39,6 +39,7 @@
   "author": "b00llish <b00llish@pm.me>",
   "license": "MIT",
   "dependencies": {
+    "@project-serum/anchor": "^0.26.0",
     "@solana/wallet-adapter-base": "^0.9.22",
     "@solana/wallet-adapter-react": "^0.15.32",
     "@solana/wallet-adapter-react-ui": "^0.9.31",

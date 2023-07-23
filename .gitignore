@@ -1,4 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
+
+# manually added
+.idea
+
 ### Webpack
 .build_cache
 ### VisualStudioCode template
