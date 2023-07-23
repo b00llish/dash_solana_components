@@ -9,7 +9,7 @@ import {
     WalletConnectWalletAdapter,
     UnsafeBurnerWalletAdapter, } from '@solana/wallet-adapter-wallets';
 import { clusterApiUrl } from '@solana/web3.js';
-import React, {FC, ReactNode, useEffect, useMemo} from 'react';
+import React, {useState, FC, ReactNode, useEffect, useMemo} from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import {DashComponentProps} from '../props';
 
@@ -19,6 +19,7 @@ require('@solana/wallet-adapter-react-ui/styles.css');
 type Props = {
     // Insert props
     network: 'devnet' | 'mainnet' | 'testnet';
+    initialPublicKeyState: string | null;
 } & DashComponentProps;
 
 /**
@@ -32,24 +33,29 @@ const NETWORKS = {
 };
 
 const SolanaWalletMultiButton: (props: Props) => JSX.Element = (props: Props) => {
-    const { id, network } = props;
+    const { id, network, initialPublicKeyState } = props;
     const networkValue = NETWORKS[network];
+
+    const [publicKeyState, setPublicKeyState] = useState(initialPublicKeyState);
+
+    const handlePublicKeyUpdate = (publicKey: string | null) => {
+        setPublicKeyState(publicKey);
+    };
+
     return (
         <div id={id}>
-            {
-                <Context network={networkValue}>
-            <Content />
-        </Context>
-            }
-          </div>
+            <Context network={networkValue} onPublicKeyUpdate={handlePublicKeyUpdate}>
+                <Content onPublicKeyUpdate={handlePublicKeyUpdate} />
+            </Context>
+        </div>
     );
 };
 
-SolanaWalletMultiButton["defaultProps"] = {network: 'mainnet'};
+SolanaWalletMultiButton["defaultProps"] = {network: 'mainnet', initialPublicKeyState: null };
 
 export default SolanaWalletMultiButton;
 
-const Context: FC<{ children: ReactNode, network: WalletAdapterNetwork }> = ({ children, network }) => {
+const Context: FC<{ children: ReactNode, network: WalletAdapterNetwork, onPublicKeyUpdate: (publicKey: string | null) => void }> = ({ children, network , onPublicKeyUpdate }) => {
     // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
     // const network = WalletAdapterNetwork.Devnet;
 
@@ -71,27 +77,28 @@ const Context: FC<{ children: ReactNode, network: WalletAdapterNetwork }> = ({ c
     return (
         <ConnectionProvider endpoint={endpoint}>
             <WalletProvider wallets={wallets} autoConnect>
-                <WalletModalProvider>{children}</WalletModalProvider>
+                <WalletModalProvider>
+                <Content onPublicKeyUpdate={onPublicKeyUpdate}/>
+                    </WalletModalProvider>
             </WalletProvider>
         </ConnectionProvider>
     );
 };
 
-const Content: FC = () => {
+const Content: FC<{ onPublicKeyUpdate: (publicKey: string | null) => void }> = ({ onPublicKeyUpdate }) => {
     const { publicKey, connected } = useWallet();
 
     useEffect(() => {
         if (connected) {
-            // If the wallet is connected, `publicKey` will be defined.
-            // You can then pass `publicKey` to a callback function, or use it in some other way.
-            console.log(publicKey?.toString());
+            const publicKeyString = publicKey?.toString() || null;
+            console.log(publicKeyString);
+            onPublicKeyUpdate(publicKeyString);
         }
     }, [connected, publicKey]);
 
     return (
         <div className="SolanaWalletMultiButton">
             <WalletMultiButton />
-            {/*<WalletDisconnectButton />*/}
         </div>
     );
 };
