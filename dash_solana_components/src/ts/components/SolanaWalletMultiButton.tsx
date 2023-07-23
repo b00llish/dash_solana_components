@@ -8,20 +8,16 @@
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import { WalletModalProvider, WalletMultiButton, WalletDisconnectButton } from '@solana/wallet-adapter-react-ui';
-import {
-    PhantomWalletAdapter,
-    SolflareWalletAdapter,
-    LedgerWalletAdapter,
-    BackpackWalletAdapter,
-    WalletConnectWalletAdapter,
-    UnsafeBurnerWalletAdapter, } from '@solana/wallet-adapter-wallets';
+import { UnsafeBurnerWalletAdapter } from '@solana/wallet-adapter-wallets';
+    
+    
 import { clusterApiUrl } from '@solana/web3.js';
 import React, {useState, FC, ReactNode, useEffect, useMemo} from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import {DashComponentProps} from '../props';
 
 // Import required stylesheets  
-require('./SolanaWalletMultiButton.css');
+// require('./SolanaWalletMultiButton.css');
 require('@solana/wallet-adapter-react-ui/styles.css');
 
 /**
@@ -153,10 +149,10 @@ const Context: FC<{ children: ReactNode, network: WalletAdapterNetwork, onPublic
     // The array is redefined only when the network changes.
     const wallets = useMemo(
         () => [
-            new PhantomWalletAdapter(),
-            new SolflareWalletAdapter(),
-            new BackpackWalletAdapter(),
-            new LedgerWalletAdapter(),
+            // new PhantomWalletAdapter(),
+            // new SolflareWalletAdapter(),
+            // new BackpackWalletAdapter(),
+            // new LedgerWalletAdapter(),
             // new UnsafeBurnerWalletAdapter(),
         ],
         // eslint-disable-next-line react-hooks/exhaustive-deps
