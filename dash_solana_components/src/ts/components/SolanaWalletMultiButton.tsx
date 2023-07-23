@@ -30,10 +30,41 @@ require('@solana/wallet-adapter-react-ui/styles.css');
  * and a publicKeyState prop which is used to store and provide the public key state.
  */
 type Props = {
-    // Insert props
+    /**
+   * The network for the wallet.
+   *
+   * This prop specifies the network for the wallet. It can be 'devnet', 'mainnet', or 'testnet'.
+   */
     network: 'devnet' | 'mainnet' | 'testnet';
+    
+     /**
+   * The state of the public key.
+   *
+   * This prop holds the state of the public key. It could be a string representing
+   * the public key, or null if there is no public key.
+   */
     publicKeyState?: string | null;  // <-- Add ? to make this property optional
-    setProps: (props: {publicKeyState?: string}) => void;
+
+    /**
+     * The custom RPC endpoint for the wallet.
+     *
+     * This prop specifies a custom RPC endpoint for the wallet. If it's not provided, 
+     * the default endpoint for the specified network will be used.
+     */
+    rpcEndpoint?: string;
+
+    /**
+   * A function to update the component's properties.
+   *
+   * Dash provides this function and passes it as a prop to the component. This function
+   * should be called with an object that contains the new values of the properties that
+   * you want to change. This is typically used inside a Dash callback to update the component's properties.
+   *
+   * For example, in our component, we call `setProps` with the new state of the `publicKeyState`
+   * whenever the wallet is connected or disconnected. This updates the `publicKeyState` property
+   * of the component and triggers a Dash callback that listens to this property.
+   */
+    setProps: (props: {publicKeyState?: string, rpcEndpoint?: string}) => void;
 } & DashComponentProps;
 
 /**
@@ -53,35 +84,70 @@ const NETWORKS = {
   'testnet': WalletAdapterNetwork.Testnet,
 };
 
+/**
+ * SolanaWalletMultiButton component.
+ *
+ * This is a multi-button component for Solana wallets. It allows users to connect
+ * to different types of Solana wallets.
+ */
+// Define the SolanaWalletMultiButton component.
+// This is a functional component that takes some props and returns a JSX element.
 const SolanaWalletMultiButton: (props: Props) => JSX.Element = (props: Props) => {
-    const { id, network, setProps } = props;
+    // Destructure the props to extract the id, network, and setProps properties.
+    const { id, className, network, rpcEndpoint, setProps } = props;
+    
+    // Map the network prop to the corresponding network value. 
+    // NETWORKS is a predefined mapping of network names to their values.
     const networkValue = NETWORKS[network];
 
+    // Define a callback function to update the public key.
+    // This function will be passed to the Context and Content components, and will be called whenever the public key changes.
     const handlePublicKeyUpdate = (publicKey) => {
-        if (setProps) setProps({ publicKeyState: publicKey });
+        
+        // Call setProps to update the publicKeyState property of the component.
+        // setProps is a function provided by Dash to update the properties of the component.
+        // The new value of publicKeyState will be available in Dash callbacks as an Input.
+        if (setProps) setProps({ publicKeyState: publicKey, rpcEndpoint });
     };
 
+    // Return a JSX element.
     return (
-        <div id={id}>
-            <Context network={networkValue} onPublicKeyUpdate={handlePublicKeyUpdate}>
+        // Wrap everything in a div and assign it the id prop.
+        // This id will be used to identify the component in Dash callbacks.
+        <div id={id} className={className}>
+            
+            {/* Use the Context component to provide the wallet context to its children.
+            Pass the network value and the handlePublicKeyUpdate function as props. */}
+            <Context network={networkValue} rpcEndpoint={rpcEndpoint} onPublicKeyUpdate={handlePublicKeyUpdate}>
+                
+                {/* Use the Content component to display the WalletMultiButton and handle the wallet connection.
+                 Pass the handlePublicKeyUpdate function as a prop. */}
                 <Content onPublicKeyUpdate={handlePublicKeyUpdate} />
             </Context>
         </div>
     );
 };
 
-SolanaWalletMultiButton["defaultProps"] = {network: 'mainnet', PublicKeyState: null };
+// Define the default props for the SolanaWalletMultiButton component.
+// If no value is provided for these props when the component is used, these default values will be used.
+SolanaWalletMultiButton["defaultProps"] = {network: 'mainnet', PublicKeyState: null, rpcEndpoint: null};
 
+// Export the SolanaWalletMultiButton component as the default export of this module.
+// This allows the component to be imported using the default import syntax.
 export default SolanaWalletMultiButton;
 
 // The Context component is responsible for providing the necessary wallet connections 
 // and context to its child components (passed as the `children` prop).
-const Context: FC<{ children: ReactNode, network: WalletAdapterNetwork, onPublicKeyUpdate: (publicKey: string | null) => void }> = ({ children, network , onPublicKeyUpdate }) => {
+const Context: FC<{ children: ReactNode, network: WalletAdapterNetwork, onPublicKeyUpdate: (publicKey: string | null) => void, rpcEndpoint?: string }> = ({ children, network , onPublicKeyUpdate, rpcEndpoint }) => {
     
     // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
     // Can provide a custom RPC endpoint here.
-    // The `useMemo` hook is used to recompute the endpoint only when the network value changes.
-    const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+    // Compute the endpoint. If `rpcEndpoint` is provided, use it. Otherwise, get the default URL for the specified network.
+    // The `useMemo` hook is used to recompute the endpoint only when `rpcEndpoint` or `network` changes.
+    const endpoint = useMemo(() => rpcEndpoint || clusterApiUrl(network), [network, rpcEndpoint]);
+
+    // Usage example with custom RPC endpoint:
+    // <Context rpcEndpoint="https://example.com/custom-endpoint" ...otherProps />
 
     // This useMemo defines the array of wallets our app will support.
     // The array is redefined only when the network changes.

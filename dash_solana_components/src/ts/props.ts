@@ -15,6 +15,13 @@ export type DashComponentProps = {
      */
     id?: string;
     /**
+     * CSS class name(s)
+     *
+     * This prop can be used to apply one or more CSS classes to the button.
+     * This makes it easy to customize the appearance of the button using CSS.
+     */
+    className?: string;
+    /**
      * Update props to trigger callbacks.
      */
     setProps: (props: Record<string, any>) => void;
