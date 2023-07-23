@@ -13,7 +13,7 @@ import React, {FC, ReactNode, useEffect, useMemo} from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import {DashComponentProps} from '../props';
 
-require('./App.css');
+require('./SolanaWalletMultiButton.css');
 require('@solana/wallet-adapter-react-ui/styles.css');
 
 type Props = {
@@ -31,7 +31,7 @@ const NETWORKS = {
   'testnet': WalletAdapterNetwork.Testnet,
 };
 
-const App: (props: Props) => JSX.Element = (props: Props) => {
+const SolanaWalletMultiButton: (props: Props) => JSX.Element = (props: Props) => {
     const { id, network } = props;
     const networkValue = NETWORKS[network];
     return (
@@ -45,9 +45,9 @@ const App: (props: Props) => JSX.Element = (props: Props) => {
     );
 };
 
-App["defaultProps"] = {};
+SolanaWalletMultiButton["defaultProps"] = {};
 
-export default App;
+export default SolanaWalletMultiButton;
 
 const Context: FC<{ children: ReactNode, network: WalletAdapterNetwork }> = ({ children, network }) => {
     // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
@@ -89,7 +89,7 @@ const Content: FC = () => {
     }, [connected, publicKey]);
 
     return (
-        <div className="App">
+        <div className="SolanaWalletMultiButton">
             <WalletMultiButton />
             {/*<WalletDisconnectButton />*/}
         </div>

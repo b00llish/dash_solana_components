@@ -1,5 +1,5 @@
-import DashSolanaComponents from './components/DashSolanaComponents';
+import SolanaWalletMultiButton from './components/SolanaWalletMultiButton';
 
 export {
-    DashSolanaComponents
+    SolanaWalletMultiButton
 }

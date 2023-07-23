@@ -1,7 +1,5 @@
-from .App import App
-from .DashSolanaComponents import DashSolanaComponents
+from .SolanaWalletMultiButton import SolanaWalletMultiButton
 
 __all__ = [
-    "App",
-    "DashSolanaComponents"
+    "SolanaWalletMultiButton"
 ]
