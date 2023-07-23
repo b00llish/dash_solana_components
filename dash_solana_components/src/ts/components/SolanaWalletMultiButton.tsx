@@ -19,7 +19,8 @@ require('@solana/wallet-adapter-react-ui/styles.css');
 type Props = {
     // Insert props
     network: 'devnet' | 'mainnet' | 'testnet';
-    initialPublicKeyState: string | null;
+    publicKeyState?: string | null;  // <-- Add ? to make this property optional
+    setProps: (props: {publicKeyState?: string}) => void;
 } & DashComponentProps;
 
 /**
@@ -33,13 +34,11 @@ const NETWORKS = {
 };
 
 const SolanaWalletMultiButton: (props: Props) => JSX.Element = (props: Props) => {
-    const { id, network, initialPublicKeyState } = props;
+    const { id, network, setProps } = props;
     const networkValue = NETWORKS[network];
 
-    const [publicKeyState, setPublicKeyState] = useState(initialPublicKeyState);
-
-    const handlePublicKeyUpdate = (publicKey: string | null) => {
-        setPublicKeyState(publicKey);
+    const handlePublicKeyUpdate = (publicKey) => {
+        if (setProps) setProps({ publicKeyState: publicKey });
     };
 
     return (
@@ -51,7 +50,7 @@ const SolanaWalletMultiButton: (props: Props) => JSX.Element = (props: Props) =>
     );
 };
 
-SolanaWalletMultiButton["defaultProps"] = {network: 'mainnet', initialPublicKeyState: null };
+SolanaWalletMultiButton["defaultProps"] = {network: 'mainnet', PublicKeyState: null };
 
 export default SolanaWalletMultiButton;
 
@@ -85,16 +84,18 @@ const Context: FC<{ children: ReactNode, network: WalletAdapterNetwork, onPublic
     );
 };
 
-const Content: FC<{ onPublicKeyUpdate: (publicKey: string | null) => void }> = ({ onPublicKeyUpdate }) => {
+const Content: FC<{ onPublicKeyUpdate: any }> = ({ onPublicKeyUpdate }) => {
     const { publicKey, connected } = useWallet();
 
     useEffect(() => {
         if (connected) {
-            const publicKeyString = publicKey?.toString() || null;
+            // If the wallet is connected, `publicKey` will be defined.
+            // You can then pass `publicKey` to a callback function, or use it in some other way.
+            const publicKeyString = publicKey?.toString();
             console.log(publicKeyString);
             onPublicKeyUpdate(publicKeyString);
         }
-    }, [connected, publicKey]);
+    }, [connected, publicKey, onPublicKeyUpdate]);
 
     return (
         <div className="SolanaWalletMultiButton">

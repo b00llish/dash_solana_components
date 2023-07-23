@@ -29,20 +29,8 @@
           "raw": "\"devnet\" | \"mainnet\" | \"testnet\""
         }
       },
-      "initialPublicKeyState": {
+      "publicKeyState": {
         "description": "",
-        "required": false,
-        "defaultValue": {
-          "value": "null",
-          "computed": false
-        },
-        "type": {
-          "name": "string",
-          "raw": "string"
-        }
-      },
-      "id": {
-        "description": "Unique ID to identify this component in Dash callbacks.",
         "required": false,
         "type": {
           "name": "string",
@@ -54,7 +42,15 @@
         "required": true,
         "type": {
           "name": "func",
-          "raw": "(props: Record<string, any>) => void"
+          "raw": "((props: { publicKeyState?: string; }) => void) & ((props: Record<string, any>) => void)"
+        }
+      },
+      "id": {
+        "description": "Unique ID to identify this component in Dash callbacks.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
         }
       }
     },
