@@ -149,10 +149,6 @@ const Context: FC<{ children: ReactNode, network: WalletAdapterNetwork, onPublic
     // The array is redefined only when the network changes.
     const wallets = useMemo(
         () => [
-            // new PhantomWalletAdapter(),
-            // new SolflareWalletAdapter(),
-            // new BackpackWalletAdapter(),
-            // new LedgerWalletAdapter(),
             // new UnsafeBurnerWalletAdapter(),
         ],
         // eslint-disable-next-line react-hooks/exhaustive-deps
