@@ -8,7 +8,12 @@
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import { WalletModalProvider, WalletMultiButton, WalletDisconnectButton } from '@solana/wallet-adapter-react-ui';
-import { UnsafeBurnerWalletAdapter } from '@solana/wallet-adapter-wallets';
+import { 
+    // UnsafeBurnerWalletAdapter,
+    PhantomWalletAdapter,
+    SolflareWalletAdapter,
+    LedgerWalletAdapter,
+} from '@solana/wallet-adapter-wallets';
     
     
 import { clusterApiUrl } from '@solana/web3.js';
@@ -150,6 +155,9 @@ const Context: FC<{ children: ReactNode, network: WalletAdapterNetwork, onPublic
     const wallets = useMemo(
         () => [
             // new UnsafeBurnerWalletAdapter(),
+            new PhantomWalletAdapter(),
+            new SolflareWalletAdapter(),
+            new LedgerWalletAdapter(),
         ],
         // eslint-disable-next-line react-hooks/exhaustive-deps
         [network]
@@ -161,6 +169,7 @@ const Context: FC<{ children: ReactNode, network: WalletAdapterNetwork, onPublic
     return (
         <ConnectionProvider endpoint={endpoint}>
             <WalletProvider wallets={wallets} autoConnect>
+            {/* <WalletProvider autoConnect> */}
                 <WalletModalProvider>
                     <Content onPublicKeyUpdate={onPublicKeyUpdate}/>
                 </WalletModalProvider>
