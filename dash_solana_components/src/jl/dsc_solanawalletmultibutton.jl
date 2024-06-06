@@ -24,7 +24,7 @@ This prop holds the state of the public key. It could be a string representing
 the public key, or null if there is no public key.
 - `rpcEndpoint` (String; optional): The custom RPC endpoint for the wallet.
 
-This prop specifies a custom RPC endpoint for the wallet. If it's not provided, 
+This prop specifies a custom RPC endpoint for the wallet. If it's not provided,
 the default endpoint for the specified network will be used.
 """
 function dsc_solanawalletmultibutton(; kwargs...)

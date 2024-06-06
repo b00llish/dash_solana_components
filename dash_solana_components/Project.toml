@@ -1,8 +1,8 @@
 
 name = "DashSolanaComponents"
-uuid = "1b08a953-4be3-4667-9a23-14569380c853"
+uuid = "1b08a953-4be3-4667-9a23-14aa18c0f971"
 authors = ["b00llish <b00llish@pm.me>"]
-version = "1.0.7"
+version = "1.0.8"
 
 [deps]
 Dash = "1b08a953-4be3-4667-9a23-3db579824955"

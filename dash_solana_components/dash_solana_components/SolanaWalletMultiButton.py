@@ -30,7 +30,7 @@ Keyword arguments:
 
 - rpcEndpoint (string; optional):
     The custom RPC endpoint for the wallet.  This prop specifies a
-    custom RPC endpoint for the wallet. If it's not provided,  the
+    custom RPC endpoint for the wallet. If it's not provided, the
     default endpoint for the specified network will be used."""
     _children_props = []
     _base_nodes = ['children']

@@ -38,7 +38,7 @@
         }
       },
       "rpcEndpoint": {
-        "description": "The custom RPC endpoint for the wallet.\n\nThis prop specifies a custom RPC endpoint for the wallet. If it's not provided, \nthe default endpoint for the specified network will be used.",
+        "description": "The custom RPC endpoint for the wallet.\n\nThis prop specifies a custom RPC endpoint for the wallet. If it's not provided,\nthe default endpoint for the specified network will be used.",
         "required": false,
         "defaultValue": {
           "value": "null",

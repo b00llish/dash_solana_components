@@ -46,7 +46,7 @@ module.exports = function (env, argv) {
               "https": require.resolve("https-browserify"), // Used for 'https'
               "assert": require.resolve("assert"), // Used for 'assert'
                "url": require.resolve("url/"),
-                "zlib": require.resolve("browserify-zlib")
+                "zlib": require.resolve("browserify-zlib")  
             },
         },
         module: {
@@ -55,6 +55,11 @@ module.exports = function (env, argv) {
                     test: /\.tsx?$/,
                     use: 'ts-loader',
                     exclude: /node_modules/,
+                },
+                {
+                    test: /\.jsx?$/,
+                    exclude: /node_modules/,
+                    use: 'babel-loader'
                 },
                 {
                     test: /\.css$/,
