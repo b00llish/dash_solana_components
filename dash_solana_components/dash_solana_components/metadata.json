@@ -1,7 +1,7 @@
 {
   "src/ts/components/SolanaWalletMultiButton.tsx": {
     "displayName": "SolanaWalletMultiButton",
-    "description": "SolanaWalletMultiButton component.\nThis is a multi-button component for Solana wallets. It allows users to connect\nto different types of Solana wallets.ne the SolanaWalletMultiButton compone is a functional component that takes some props and returns a JSX eleme",
+    "description": "SolanaWalletMultiButton.\nRequires use of the WalletContextProvider to provide wallet connections.",
     "props": {
       "network": {
         "description": "The network for the wallet.\n\nThis prop specifies the network for the wallet. It can be 'devnet', 'mainnet', or 'testnet'.",
@@ -78,32 +78,32 @@
   },
   "src/ts/components/WalletContextProvider.tsx": {
     "displayName": "WalletContextProvider",
-    "description": "",
+    "description": "Wallet Context Provider.\nThis is a wrapper for apps that provides wallet context throughout the app.\nIt must be used at the root of the app to provide wallet connections to all child components.",
     "props": {
       "network": {
-        "description": "",
-        "required": false,
+        "description": "The network for the wallet.\n\nThis prop specifies the network for the wallet. It can be 'devnet', 'mainnet', or 'testnet'.",
+        "required": true,
         "type": {
           "name": "enum",
           "value": [
             {
-              "value": "'mainnet-beta'",
+              "value": "'devnet'",
+              "computed": false
+            },
+            {
+              "value": "'mainnet'",
               "computed": false
             },
             {
               "value": "'testnet'",
               "computed": false
-            },
-            {
-              "value": "'devnet'",
-              "computed": false
             }
           ],
-          "raw": "WalletAdapterNetwork"
+          "raw": "\"devnet\" | \"mainnet\" | \"testnet\""
         }
       },
       "rpcEndpoint": {
-        "description": "",
+        "description": "The custom RPC endpoint for the wallet.\n\nThis prop specifies a custom RPC endpoint for the wallet. If it's not provided,\nthe default endpoint for the specified network will be used.",
         "required": false,
         "type": {
           "name": "string",
@@ -111,19 +111,11 @@
         }
       },
       "children": {
-        "description": "",
+        "description": "Content",
         "required": true,
         "type": {
           "name": "node",
           "raw": "ReactNode"
-        }
-      },
-      "setProps": {
-        "description": "Update props to trigger callbacks.",
-        "required": true,
-        "type": {
-          "name": "func",
-          "raw": "((props: {}) => void) & ((props: Record<string, any>) => void)"
         }
       },
       "id": {
@@ -132,6 +124,14 @@
         "type": {
           "name": "string",
           "raw": "string"
+        }
+      },
+      "setProps": {
+        "description": "Update props to trigger callbacks.",
+        "required": true,
+        "type": {
+          "name": "func",
+          "raw": "(props: Record<string, any>) => void"
         }
       },
       "className": {

@@ -45,8 +45,8 @@ module.exports = function (env, argv) {
               "http": require.resolve("stream-http"), // Used for 'http'
               "https": require.resolve("https-browserify"), // Used for 'https'
               "assert": require.resolve("assert"), // Used for 'assert'
-               "url": require.resolve("url/"),
-                "zlib": require.resolve("browserify-zlib")  
+              "url": require.resolve("url/"),
+              "zlib": require.resolve("browserify-zlib")  
             },
         },
         module: {
@@ -56,11 +56,11 @@ module.exports = function (env, argv) {
                     use: 'ts-loader',
                     exclude: /node_modules/,
                 },
-                {
-                    test: /\.jsx?$/,
-                    exclude: /node_modules/,
-                    use: 'babel-loader'
-                },
+                // {
+                //     test: /\.jsx?$/,
+                //     exclude: /node_modules/,
+                //     use: 'babel-loader'
+                // },
                 {
                     test: /\.css$/,
                     use: [

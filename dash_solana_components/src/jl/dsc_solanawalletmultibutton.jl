@@ -6,9 +6,8 @@ export dsc_solanawalletmultibutton
     dsc_solanawalletmultibutton(;kwargs...)
 
 A SolanaWalletMultiButton component.
-SolanaWalletMultiButton component.
-This is a multi-button component for Solana wallets. It allows users to connect
-to different types of Solana wallets.ne the SolanaWalletMultiButton compone is a functional component that takes some props and returns a JSX eleme
+SolanaWalletMultiButton.
+Requires use of the WalletContextProvider to provide wallet connections.
 Keyword arguments:
 - `id` (String; optional): Unique ID to identify this component in Dash callbacks.
 - `className` (String; optional): Adds CSS class name(s).

@@ -16,4 +16,4 @@ export type DashBaseProps = {
     setProps: (props: Record<string, any>) => void;
     /**  Adds CSS class name(s). */
     className?: string;
-}
+};

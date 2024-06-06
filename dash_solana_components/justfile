@@ -31,12 +31,16 @@ publish: package
     # twine --repository 'dash-solana-components'
     twine upload dist/*
 
-
 # Remove dist & build directories
 clean:
     rm -rf dist
     rm -rf build
 
+format:
+    npx prettier --write src/ts/
+
+run:
+    python usage.py
 
 # to update npm packages
 # npm install -g npm-check-updates

@@ -1,4 +1,4 @@
-import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
+import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 
 /**
  * SolanaWalletMultiButton is a functional React component that provides an interface to
@@ -11,7 +11,7 @@ import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
  */
 // Define network values
 export const NETWORKS = {
-    'devnet': WalletAdapterNetwork.Devnet,
-    'mainnet': WalletAdapterNetwork.Mainnet,
-    'testnet': WalletAdapterNetwork.Testnet,
+    devnet: WalletAdapterNetwork.Devnet,
+    mainnet: WalletAdapterNetwork.Mainnet,
+    testnet: WalletAdapterNetwork.Testnet,
 };

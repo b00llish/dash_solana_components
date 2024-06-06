@@ -1,12 +1,13 @@
-import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import React, { FC, useEffect } from 'react';
-import { useWallet } from '@solana/wallet-adapter-react';
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import React, { FC, useEffect } from "react";
+import { useWallet } from "@solana/wallet-adapter-react";
 
-// The Content component renders the WalletMultiButton and also monitors the connection status 
+// The Content component renders the WalletMultiButton and also monitors the connection status
 // and public key of the wallet via the `useWallet` hook.
 
-export const Content: FC<{ onPublicKeyUpdate: (publicKey: string | null) => void; }> = ({ onPublicKeyUpdate }) => {
-
+export const Content: FC<{
+    onPublicKeyUpdate: (publicKey: string | null) => void;
+}> = ({ onPublicKeyUpdate }) => {
     // The useWallet hook provides the `publicKey` of the connected wallet and a boolean
     // `connected` indicating the connection status.
     const { publicKey, connected } = useWallet();
@@ -23,7 +24,7 @@ export const Content: FC<{ onPublicKeyUpdate: (publicKey: string | null) => void
         }
     }, [connected, publicKey, onPublicKeyUpdate]);
 
-    // This component renders the WalletMultiButton, which provides the user interface 
+    // This component renders the WalletMultiButton, which provides the user interface
     // for connecting and disconnecting wallets.
     return (
         <div className="SolanaWalletMultiButton">

@@ -6,7 +6,7 @@
 \title{SolanaWalletMultiButton component}
 
 \description{
-SolanaWalletMultiButton component. This is a multi-button component for Solana wallets. It allows users to connect to different types of Solana wallets.ne the SolanaWalletMultiButton compone is a functional component that takes some props and returns a JSX eleme
+SolanaWalletMultiButton. Requires use of the WalletContextProvider to provide wallet connections.
 }
 
 \usage{
