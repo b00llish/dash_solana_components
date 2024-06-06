@@ -5,13 +5,10 @@
  */
 
 // Import required modules
-// import { WalletDisconnectButton } from '@solana/wallet-adapter-react-ui';
-    
-    
 import React, {useState} from 'react';
-import { MultiButtonProps } from '../props/MultiButtonComponentProps';
+import { MultiButtonProps } from '../props/button';
 import { NETWORKS } from '../constants';
-import { ContextProvider } from '../helpers/ContextProvider';
+import WalletContextProvider from './WalletContextProvider';
 import { Content } from '../helpers/Content';
 
 // Import required stylesheets  
@@ -53,12 +50,12 @@ const SolanaWalletMultiButton: (props: MultiButtonProps) => JSX.Element = (props
             
             {/* Use the Context component to provide the wallet context to its children.
             Pass the network value and the handlePublicKeyUpdate function as props. */}
-            <ContextProvider network={networkValue} rpcEndpoint={rpcEndpoint} onPublicKeyUpdate={handlePublicKeyUpdate}>
+            {/* <WalletContextProvider network={networkValue} rpcEndpoint={rpcEndpoint}> */}
                 
                 {/* Use the Content component to display the WalletMultiButton and handle the wallet connection.
                  Pass the handlePublicKeyUpdate function as a prop. */}
                 <Content onPublicKeyUpdate={handlePublicKeyUpdate} />
-            </ContextProvider>
+            {/* </WalletContextProvider> */}
         </div>
     );
 };

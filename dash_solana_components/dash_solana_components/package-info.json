@@ -5,12 +5,12 @@
   "main": "index.ts",
   "repository": {
     "type": "git",
-    "url": "git://github.com/b00llish//dash-solana-components.git"
+    "url": "git://github.com/b00llish/dash-solana-components.git"
   },
   "bugs": {
-    "url": "https://github.com/b00llish//dash-solana-components/issues"
+    "url": "https://github.com/b00llish/dash-solana-components/issues"
   },
-  "homepage": "https://github.com/b00llish//dash-solana-components",
+  "homepage": "https://github.com/b00llish/dash-solana-components",
   "scripts": {
     "build:js::dev": "webpack --mode development",
     "build:js": "webpack",

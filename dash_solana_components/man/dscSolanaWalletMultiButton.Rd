@@ -17,10 +17,7 @@ rpcEndpoint=NULL)
 \arguments{
 \item{id}{Character. Unique ID to identify this component in Dash callbacks.}
 
-\item{className}{Character. CSS class name(s)
-
-This prop can be used to apply one or more CSS classes to the button.
-This makes it easy to customize the appearance of the button using CSS.}
+\item{className}{Character. Adds CSS class name(s).}
 
 \item{network}{A value equal to: 'devnet', 'mainnet', 'testnet'. The network for the wallet.
 

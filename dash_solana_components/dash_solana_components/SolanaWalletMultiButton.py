@@ -15,9 +15,7 @@ Keyword arguments:
     Unique ID to identify this component in Dash callbacks.
 
 - className (string; optional):
-    CSS class name(s)  This prop can be used to apply one or more CSS
-    classes to the button. This makes it easy to customize the
-    appearance of the button using CSS.
+    Adds CSS class name(s).
 
 - network (a value equal to: 'devnet', 'mainnet', 'testnet'; default 'mainnet'):
     The network for the wallet.  This prop specifies the network for

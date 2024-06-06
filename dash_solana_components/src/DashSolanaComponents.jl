@@ -6,6 +6,7 @@ const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
 const version = "1.0.8"
 
 include("jl/dsc_solanawalletmultibutton.jl")
+include("jl/dsc_walletcontextprovider.jl")
 
 function __init__()
     DashBase.register_package(

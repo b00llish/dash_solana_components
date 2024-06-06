@@ -1,4 +1,4 @@
-import { DashComponentProps } from './DashComponentProps';
+import { DashBaseProps } from './dash';
 
 /**
  * Define component properties.
@@ -41,4 +41,4 @@ export type MultiButtonProps = {
    * of the component and triggers a Dash callback that listens to this property.
    */
     setProps: (props: { publicKeyState?: string; rpcEndpoint?: string; }) => void;
-} & DashComponentProps;
+} & DashBaseProps;

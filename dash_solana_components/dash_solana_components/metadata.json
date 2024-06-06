@@ -66,7 +66,76 @@
         }
       },
       "className": {
-        "description": "CSS class name(s)\n\nThis prop can be used to apply one or more CSS classes to the button.\nThis makes it easy to customize the appearance of the button using CSS.",
+        "description": "Adds CSS class name(s).",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      }
+    },
+    "isContext": false
+  },
+  "src/ts/components/WalletContextProvider.tsx": {
+    "displayName": "WalletContextProvider",
+    "description": "",
+    "props": {
+      "network": {
+        "description": "",
+        "required": false,
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'mainnet-beta'",
+              "computed": false
+            },
+            {
+              "value": "'testnet'",
+              "computed": false
+            },
+            {
+              "value": "'devnet'",
+              "computed": false
+            }
+          ],
+          "raw": "WalletAdapterNetwork"
+        }
+      },
+      "rpcEndpoint": {
+        "description": "",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "children": {
+        "description": "",
+        "required": true,
+        "type": {
+          "name": "node",
+          "raw": "ReactNode"
+        }
+      },
+      "setProps": {
+        "description": "Update props to trigger callbacks.",
+        "required": true,
+        "type": {
+          "name": "func",
+          "raw": "((props: {}) => void) & ((props: Record<string, any>) => void)"
+        }
+      },
+      "id": {
+        "description": "Unique ID to identify this component in Dash callbacks.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "className": {
+        "description": "Adds CSS class name(s).",
         "required": false,
         "type": {
           "name": "string",

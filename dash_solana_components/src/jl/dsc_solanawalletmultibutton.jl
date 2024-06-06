@@ -11,10 +11,7 @@ This is a multi-button component for Solana wallets. It allows users to connect
 to different types of Solana wallets.ne the SolanaWalletMultiButton compone is a functional component that takes some props and returns a JSX eleme
 Keyword arguments:
 - `id` (String; optional): Unique ID to identify this component in Dash callbacks.
-- `className` (String; optional): CSS class name(s)
-
-This prop can be used to apply one or more CSS classes to the button.
-This makes it easy to customize the appearance of the button using CSS.
+- `className` (String; optional): Adds CSS class name(s).
 - `network` (a value equal to: 'devnet', 'mainnet', 'testnet'; optional): The network for the wallet.
 
 This prop specifies the network for the wallet. It can be 'devnet', 'mainnet', or 'testnet'.

@@ -6,10 +6,16 @@ from dash.dependencies import Input, Output
 
 app = dash.Dash(__name__)
 
-app.layout = html.Div([
-    html.Div(dsc.SolanaWalletMultiButton(id='solana-wallet', network='mainnet', rpcEndpoint='https://rpc.ankr.com/solana/589e74ba6a39cfec409dd5bed66212d2559adf2b01dbd71f2a8091feaa390bd9')),
-    html.Div(id='public-key-display', children="Not connected."),
-])
+app.layout = dsc.WalletContextProvider(
+    id='wallet-context-provider',
+    network='mainnet',
+    children=html.Div(
+        [
+            html.Div(dsc.SolanaWalletMultiButton(id='solana-wallet', network='mainnet', rpcEndpoint='https://rpc.ankr.com/solana/589e74ba6a39cfec409dd5bed66212d2559adf2b01dbd71f2a8091feaa390bd9')),
+            html.Div(id='public-key-display', children="Not connected."),
+        ]
+    )
+)
 
 @app.callback(
     Output('public-key-display', 'children'),
