@@ -38,7 +38,7 @@ const SolanaWalletMultiButton: (props: MultiButtonProps) => JSX.Element = (
         // This id will be used to identify the component in Dash callbacks.
         <div id={id} className={className}>
             {/* Use the Content component to display the WalletMultiButton and handle the wallet connection.
-                 Pass the handlePublicKeyUpdate function as a prop. */}
+                Pass the handlePublicKeyUpdate function as a prop. */}
             <Content onPublicKeyUpdate={handlePublicKeyUpdate} />
         </div>
     );

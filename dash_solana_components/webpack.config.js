@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const packagejson = require('./package.json');
 
@@ -46,9 +47,15 @@ module.exports = function (env, argv) {
               "https": require.resolve("https-browserify"), // Used for 'https'
               "assert": require.resolve("assert"), // Used for 'assert'
               "url": require.resolve("url/"),
-              "zlib": require.resolve("browserify-zlib")  
+              "zlib": require.resolve("browserify-zlib"),
+              "buffer": require.resolve("buffer/"),
             },
         },
+        plugins: [
+            new webpack.ProvidePlugin({
+                Buffer: ['buffer', 'Buffer'], // Add this line
+            }),
+        ],
         module: {
             rules: [
                 {
@@ -56,11 +63,11 @@ module.exports = function (env, argv) {
                     use: 'ts-loader',
                     exclude: /node_modules/,
                 },
-                // {
-                //     test: /\.jsx?$/,
-                //     exclude: /node_modules/,
-                //     use: 'babel-loader'
-                // },
+                {
+                    test: /\.jsx?$/,
+                    exclude: /node_modules/,
+                    use: 'babel-loader'
+                },
                 {
                     test: /\.css$/,
                     use: [

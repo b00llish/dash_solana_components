@@ -6,13 +6,17 @@ from dash.dependencies import Input, Output
 
 app = dash.Dash(__name__)
 
+helius_rpc = 'https://mainnet.helius-rpc.com/?api-key=0ef644d5-6254-4913-a106-0c1ce1b3b3cf'
+
 app.layout = dsc.WalletContextProvider(
     id='wallet-context-provider',
     network='mainnet',
+    rpcEndpoint=helius_rpc,
     children=html.Div(
         [
-            html.Div(dsc.SolanaWalletMultiButton(id='solana-wallet', network='mainnet', rpcEndpoint='https://rpc.ankr.com/solana/589e74ba6a39cfec409dd5bed66212d2559adf2b01dbd71f2a8091feaa390bd9')),
+            html.Div(dsc.SolanaWalletMultiButton(id='solana-wallet', network='mainnet', rpcEndpoint=helius_rpc)),
             html.Div(id='public-key-display', children="Not connected."),
+            html.Div(dsc.SendSol(id='send-sol')),
         ]
     )
 )

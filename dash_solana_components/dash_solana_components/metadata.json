@@ -1,4 +1,35 @@
 {
+  "src/ts/components/SendSol.tsx": {
+    "displayName": "SendSol",
+    "description": "",
+    "props": {
+      "id": {
+        "description": "Unique ID to identify this component in Dash callbacks.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "setProps": {
+        "description": "Update props to trigger callbacks.",
+        "required": true,
+        "type": {
+          "name": "func",
+          "raw": "(props: Record<string, any>) => void"
+        }
+      },
+      "className": {
+        "description": "Adds CSS class name(s).",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      }
+    },
+    "isContext": false
+  },
   "src/ts/components/SolanaWalletMultiButton.tsx": {
     "displayName": "SolanaWalletMultiButton",
     "description": "SolanaWalletMultiButton.\nRequires use of the WalletContextProvider to provide wallet connections.",

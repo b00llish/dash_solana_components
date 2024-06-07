@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "bungcip.better-toml",
+        "zeshuaro.vscode-python-poetry",
+        "mikeshaker.python-essentials"
+    ]
+}
