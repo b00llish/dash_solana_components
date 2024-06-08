@@ -1,35 +1,4 @@
 {
-  "src/ts/components/SendSol.tsx": {
-    "displayName": "SendSol",
-    "description": "",
-    "props": {
-      "id": {
-        "description": "Unique ID to identify this component in Dash callbacks.",
-        "required": false,
-        "type": {
-          "name": "string",
-          "raw": "string"
-        }
-      },
-      "setProps": {
-        "description": "Update props to trigger callbacks.",
-        "required": true,
-        "type": {
-          "name": "func",
-          "raw": "(props: Record<string, any>) => void"
-        }
-      },
-      "className": {
-        "description": "Adds CSS class name(s).",
-        "required": false,
-        "type": {
-          "name": "string",
-          "raw": "string"
-        }
-      }
-    },
-    "isContext": false
-  },
   "src/ts/components/SolanaWalletMultiButton.tsx": {
     "displayName": "SolanaWalletMultiButton",
     "description": "SolanaWalletMultiButton.\nRequires use of the WalletContextProvider to provide wallet connections.",
@@ -94,6 +63,71 @@
         "type": {
           "name": "string",
           "raw": "string"
+        }
+      },
+      "className": {
+        "description": "Adds CSS class name(s).",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      }
+    },
+    "isContext": false
+  },
+  "src/ts/components/TransactionButtonWrapper.tsx": {
+    "displayName": "TransactionButtonWrapper",
+    "description": "",
+    "props": {
+      "children": {
+        "description": "",
+        "required": true,
+        "type": {
+          "name": "node",
+          "raw": "ReactNode"
+        }
+      },
+      "transactionInstructions": {
+        "description": "",
+        "required": true,
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "arrayOf",
+              "value": {
+                "name": "string",
+                "raw": "string"
+              },
+              "raw": "string[]"
+            }
+          ],
+          "raw": "string[] | []"
+        }
+      },
+      "onTransactionSent": {
+        "description": "",
+        "required": false,
+        "type": {
+          "name": "func",
+          "raw": "(signature: string) => void"
+        }
+      },
+      "id": {
+        "description": "Unique ID to identify this component in Dash callbacks.",
+        "required": false,
+        "type": {
+          "name": "string",
+          "raw": "string"
+        }
+      },
+      "setProps": {
+        "description": "Update props to trigger callbacks.",
+        "required": true,
+        "type": {
+          "name": "func",
+          "raw": "(props: Record<string, any>) => void"
         }
       },
       "className": {

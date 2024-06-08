@@ -1,5 +1,5 @@
-import SendSol from "./components/SendSol";
 import SolanaWalletMultiButton from "./components/SolanaWalletMultiButton";
+import TransactionButtonWrapper from "./components/TransactionButtonWrapper";
 import WalletContextProvider from "./components/WalletContextProvider";
 
-export { SendSol, SolanaWalletMultiButton, WalletContextProvider };
+export { SolanaWalletMultiButton, TransactionButtonWrapper, WalletContextProvider };

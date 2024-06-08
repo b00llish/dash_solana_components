@@ -1,7 +1,8 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
-export(dscSendSol)
 export(dscSolanaWalletMultiButton)
+export(dscTransactionButtonWrapper)
 export(dscWalletContextProvider)
 export(dscApp)
 export(dscDashSolanaComponents)
+export(dscSendSol)

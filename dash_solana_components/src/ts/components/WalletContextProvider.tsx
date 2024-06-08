@@ -22,8 +22,6 @@ import { WalletContextProviderProps as Props } from "../props/contextProvider";
 const WalletContextProvider = (props: Props) => {
     const { children, network, rpcEndpoint } = props;
 
-    console.log("WalletContextProvider props: ", props)
-
     // Map the network prop to the corresponding network value.
     // NETWORKS is a predefined mapping of network names to their values.
     const networkValue = NETWORKS[network];

@@ -5,8 +5,8 @@ using Dash
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
 const version = "1.0.8"
 
-include("jl/dsc_sendsol.jl")
 include("jl/dsc_solanawalletmultibutton.jl")
+include("jl/dsc_transactionbuttonwrapper.jl")
 include("jl/dsc_walletcontextprovider.jl")
 
 function __init__()

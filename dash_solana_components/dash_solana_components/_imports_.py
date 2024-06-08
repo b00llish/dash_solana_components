@@ -1,9 +1,9 @@
-from .SendSol import SendSol
 from .SolanaWalletMultiButton import SolanaWalletMultiButton
+from .TransactionButtonWrapper import TransactionButtonWrapper
 from .WalletContextProvider import WalletContextProvider
 
 __all__ = [
-    "SendSol",
     "SolanaWalletMultiButton",
+    "TransactionButtonWrapper",
     "WalletContextProvider"
 ]
