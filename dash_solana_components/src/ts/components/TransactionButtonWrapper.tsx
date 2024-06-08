@@ -9,6 +9,17 @@ type TransactionInstructionData = {
     data: number[];
 };
 
+/**
+ * A wrapper component for transaction buttons that handles Solana transaction instructions.
+ * @param {Object} props - The properties for the component.
+ * @param {string} props.id - The ID of the component.
+ * @param {string} props.className - The CSS class of the component.
+ * @param {function} props.setProps - Function to set properties.
+ * @param {React.ReactNode} props.children - The child components.
+ * @param {string[] | null} props.transactionInstructions - The transaction instructions in JSON format.
+ * @param {function(string): void} [props.onTransactionSent] - Callback function when the transaction is sent.
+ * @returns {JSX.Element} The rendered component.
+ */
 const TransactionButtonWrapper = ({
     id,
     className,
@@ -89,7 +100,8 @@ const TransactionButtonWrapper = ({
         executeTransaction();
     }, [transactionInstructions, connection, publicKey, sendTransaction, setProps, onTransactionSent]);
 
-    const handleClick = () => {
+    const handleClick = (event) => {
+        event.preventDefault();
         console.log('Button clicked, waiting for transaction instructions...');
     };
 
