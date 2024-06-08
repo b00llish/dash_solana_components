@@ -1,3 +1,4 @@
+// TransactionButtonWrapper.tsx
 import React, { useEffect, useState, useRef } from 'react';
 import * as web3 from '@solana/web3.js';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
@@ -17,7 +18,6 @@ type TransactionInstructionData = {
  * @param {function} props.setProps - Function to set properties.
  * @param {React.ReactNode} props.children - The child components.
  * @param {string[] | null} props.transactionInstructions - The transaction instructions in JSON format.
- * @param {function(string): void} [props.onTransactionSent] - Callback function when the transaction is sent.
  * @returns {JSX.Element} The rendered component.
  */
 const TransactionButtonWrapper = ({
@@ -26,7 +26,6 @@ const TransactionButtonWrapper = ({
     setProps,
     children,
     transactionInstructions,
-    onTransactionSent,
 }: TransactionButtonWrapperProps) => {
     const { connection } = useConnection();
     const { publicKey, sendTransaction } = useWallet();
@@ -84,10 +83,6 @@ const TransactionButtonWrapper = ({
                 const signature = await sendTransaction(transaction, connection);
                 console.log('Transaction signature:', signature);
 
-                if (onTransactionSent) {
-                    onTransactionSent(signature);
-                }
-
                 setProps({ transactionSignature: signature });
             } catch (error) {
                 console.error('Transaction failed:', error);
@@ -98,7 +93,7 @@ const TransactionButtonWrapper = ({
         };
 
         executeTransaction();
-    }, [transactionInstructions, connection, publicKey, sendTransaction, setProps, onTransactionSent]);
+    }, [transactionInstructions, connection, publicKey, sendTransaction, setProps]);
 
     const handleClick = (event) => {
         event.preventDefault();

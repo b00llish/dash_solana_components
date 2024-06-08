@@ -81,7 +81,7 @@
     "description": "A wrapper component for transaction buttons that handles Solana transaction instructions.\n@param {Object} props - The properties for the component.\n@param {string} props.id - The ID of the component.\n@param {string} props.className - The CSS class of the component.\n@param {function} props.setProps - Function to set properties.\n@param {React.ReactNode} props.children - The child components.\n@param {string[] | null} props.transactionInstructions - The transaction instructions in JSON format.\n@param {function(string): void} [props.onTransactionSent] - Callback function when the transaction is sent.\n@returns {JSX.Element} The rendered component.",
     "props": {
       "children": {
-        "description": "",
+        "description": "The child components to be rendered inside the wrapper.",
         "required": true,
         "type": {
           "name": "node",
@@ -89,7 +89,7 @@
         }
       },
       "transactionInstructions": {
-        "description": "",
+        "description": "The transaction instructions in JSON format, or an empty list if none.",
         "required": true,
         "type": {
           "name": "union",
@@ -104,14 +104,6 @@
             }
           ],
           "raw": "string[] | []"
-        }
-      },
-      "onTransactionSent": {
-        "description": "",
-        "required": false,
-        "type": {
-          "name": "func",
-          "raw": "(signature: string) => void"
         }
       },
       "id": {

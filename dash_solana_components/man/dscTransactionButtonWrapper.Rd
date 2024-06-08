@@ -11,19 +11,17 @@ A wrapper component for transaction buttons that handles Solana transaction inst
 
 \usage{
 dscTransactionButtonWrapper(children=NULL, id=NULL, className=NULL,
-onTransactionSent=NULL, transactionInstructions=NULL)
+transactionInstructions=NULL)
 }
 
 \arguments{
-\item{children}{A list of or a singular dash component, string or number. }
+\item{children}{A list of or a singular dash component, string or number. The child components to be rendered inside the wrapper.}
 
 \item{id}{Character. Unique ID to identify this component in Dash callbacks.}
 
 \item{className}{Character. Adds CSS class name(s).}
 
-\item{onTransactionSent}{}
-
-\item{transactionInstructions}{List of characters. }
+\item{transactionInstructions}{List of characters. The transaction instructions in JSON format, or an empty list if none.}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

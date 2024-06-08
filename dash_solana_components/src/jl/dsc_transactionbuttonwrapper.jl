@@ -19,10 +19,10 @@ A wrapper component for transaction buttons that handles Solana transaction inst
 @param {function(string): void} [props.onTransactionSent] - Callback function when the transaction is sent.
 @returns {JSX.Element} The rendered component.
 Keyword arguments:
-- `children` (a list of or a singular dash component, string or number; required)
+- `children` (a list of or a singular dash component, string or number; required): The child components to be rendered inside the wrapper.
 - `id` (String; optional): Unique ID to identify this component in Dash callbacks.
 - `className` (String; optional): Adds CSS class name(s).
-- `transactionInstructions` (Array of Strings; required)
+- `transactionInstructions` (Array of Strings; required): The transaction instructions in JSON format, or an empty list if none.
 """
 function dsc_transactionbuttonwrapper(; kwargs...)
         available_props = Symbol[:children, :id, :className, :transactionInstructions]

@@ -17,7 +17,8 @@ A wrapper component for transaction buttons that handles Solana transaction inst
 
 Keyword arguments:
 
-- children (a list of or a singular dash component, string or number; required)
+- children (a list of or a singular dash component, string or number; required):
+    The child components to be rendered inside the wrapper.
 
 - id (string; optional):
     Unique ID to identify this component in Dash callbacks.
@@ -25,13 +26,15 @@ Keyword arguments:
 - className (string; optional):
     Adds CSS class name(s).
 
-- transactionInstructions (list of strings; required)"""
+- transactionInstructions (list of strings; required):
+    The transaction instructions in JSON format, or an empty list if
+    none."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'dash_solana_components'
     _type = 'TransactionButtonWrapper'
     @_explicitize_args
-    def __init__(self, children=None, transactionInstructions=Component.REQUIRED, onTransactionSent=Component.UNDEFINED, id=Component.UNDEFINED, className=Component.UNDEFINED, **kwargs):
+    def __init__(self, children=None, transactionInstructions=Component.REQUIRED, id=Component.UNDEFINED, className=Component.UNDEFINED, **kwargs):
         self._prop_names = ['children', 'id', 'className', 'transactionInstructions']
         self._valid_wildcard_attributes =            []
         self.available_properties = ['children', 'id', 'className', 'transactionInstructions']

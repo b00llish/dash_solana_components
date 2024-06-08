@@ -1,6 +1,4 @@
 # usage.py
-import json
-
 import dash
 from dash import dcc, no_update
 from dash import html
@@ -51,6 +49,7 @@ app.layout = dsc.WalletContextProvider(
                     transactionInstructions=[],
                 ),
             ),
+            html.Div(id='transaction-signature-display', children="Transaction signature will appear here."),
         ]
     )
 )
@@ -93,6 +92,14 @@ def update_transaction_data(n_clicks, public_key_state, amount, to_public_key):
             )
     return no_update
 
+@app.callback(
+    Output('transaction-signature-display', 'children'),
+    Input('transaction-button', 'transactionSignature'),
+)
+def display_transaction_signature(transaction_signature):
+    if not transaction_signature:
+        return no_update
+    return f"Transaction signature: {transaction_signature}"
 
 if __name__ == '__main__':
     app.run_server(debug=True)
