@@ -6,18 +6,22 @@ from dash.development.base_component import Component, _explicitize_args
 class TransactionButtonWrapper(Component):
     """A TransactionButtonWrapper component.
 A wrapper component for transaction buttons that handles Solana transaction instructions.
+A button can be clicked to send a transaction to the Solana network, using the instructions
+passed to the transactionInstructions prop.
 @param {Object} props - The properties for the component.
 @param {string} props.id - The ID of the component.
 @param {string} props.className - The CSS class of the component.
 @param {function} props.setProps - Function to set properties.
-@param {React.ReactNode} props.children - The child components.
+@param {React.ReactNode} props.children - The child components. This should be a single button or any component that has an "onClick" event.
 @param {string[] | null} props.transactionInstructions - The transaction instructions in JSON format.
 @returns {JSX.Element} The rendered component.
 
 Keyword arguments:
 
 - children (a list of or a singular dash component, string or number; required):
-    The child components to be rendered inside the wrapper.
+    The child components to be rendered inside the wrapper. This
+    should be a single button or other component with \"onClick\"
+    event.
 
 - id (string; optional):
     Unique ID to identify this component in Dash callbacks.

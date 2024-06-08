@@ -12,7 +12,7 @@ export type SendSolTxProps = {
      * Connection element for wallet.
      */
     connection: web3.Connection;
-    
+
     /**
      * Public key element for wallet.
      */
@@ -26,6 +26,4 @@ export type SendSolTxProps = {
         connection: web3.Connection,
         options?: SendTransactionOptions
     ) => Promise<string>;
-
-
 } & DashBaseProps;

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import * as web3 from '@solana/web3.js';
-import { useConnection, useWallet } from '@solana/wallet-adapter-react';
-import { SendSolTxProps } from '../props/sendSolTx';
-import RenderedComponent from './RenderedComponent';
+import React, { useState } from "react";
+import * as web3 from "@solana/web3.js";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { SendSolTxProps } from "../props/sendSolTx";
+import RenderedComponent from "./RenderedComponent";
 
 /**
  * SendSolTx component for sending Solana tokens.
@@ -11,7 +11,7 @@ import RenderedComponent from './RenderedComponent';
  * @returns {JSX.Element} The rendered component.
  */
 const SendSolTx = (props: SendSolTxProps) => {
-    const [account, setAccount] = useState('');
+    const [account, setAccount] = useState("");
     const [amount, setAmount] = useState(0);
 
     const { connection } = useConnection();
@@ -24,13 +24,15 @@ const SendSolTx = (props: SendSolTxProps) => {
      */
     const sendSolTx = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (props.connectionErr()) { return; }
+        if (props.connectionErr()) {
+            return;
+        }
 
-        console.log('account: ', account);
-        console.log('amount: ', amount);
+        console.log("account: ", account);
+        console.log("amount: ", amount);
 
         if (!connection || !publicKey) {
-            console.log('Please connect your wallet.');
+            console.log("Please connect your wallet.");
             return;
         }
 
@@ -54,42 +56,42 @@ const SendSolTx = (props: SendSolTxProps) => {
             console.log(error);
         } finally {
             console.log("clearing state variables...");
-            setAccount('');
+            setAccount("");
             setAmount(0);
-            (document.getElementById('account') as HTMLInputElement).value = '';
-            (document.getElementById('amount') as HTMLInputElement).value = '';
+            (document.getElementById("account") as HTMLInputElement).value = "";
+            (document.getElementById("amount") as HTMLInputElement).value = "";
         }
     };
 
     const outputs = [
         {
-            title: 'Transaction Signature...',
+            title: "Transaction Signature...",
             dependency: props.sendSolTx,
-            href: `https://solana.fm/tx/${props.sendSolTx}`
+            href: `https://solana.fm/tx/${props.sendSolTx}`,
         },
     ];
 
     const inputs = [
         {
-            title: 'Address of receiver',
-            id: 'account',
-            type: 'text',
-            placeholder: 'Public key of receiver',
+            title: "Address of receiver",
+            id: "account",
+            type: "text",
+            placeholder: "Public key of receiver",
             method: (event: React.ChangeEvent<HTMLInputElement>) => {
                 setAccount(event.target.value);
             },
         },
         {
-            title: 'Amount of SOL to send',
-            id: 'amount',
-            type: 'number',
-            placeholder: 'Amount of SOL to send',
+            title: "Amount of SOL to send",
+            id: "amount",
+            type: "number",
+            placeholder: "Amount of SOL to send",
             method: (event: React.ChangeEvent<HTMLInputElement>) => {
                 setAmount(event.target.valueAsNumber);
             },
             min: 0,
             step: web3.LAMPORTS_PER_SOL,
-        }
+        },
     ];
 
     return (

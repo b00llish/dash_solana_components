@@ -41,13 +41,10 @@ app.layout = dsc.WalletContextProvider(
             html.Div(id='public-key-display', children="Not connected."),
             html.Div(children=[dcc.Input(id='amt-input-box', type='number', value='0.1', min=0, step=1/LAMPORTS_PER_SOL)]),
             html.Div(children=[dcc.Input(id='to-pubkey-input-box', type='text', value='FTZbJxyv3QPFMHfqdUaqVLDcNuhsVpGaSZGWiEaDqFDx')]),
-            html.Div(
-                id='transaction-button-wrapper',
-                children=dsc.TransactionButtonWrapper(
-                    id='transaction-button',
+            dsc.TransactionButtonWrapper(
+                    id='transaction-button-wrapper',
                     children=html.Button('Send SOL', id='send-sol-button', disabled=True),
                     transactionInstructions=[],
-                ),
             ),
             html.Div(id='transaction-signature-display', children="Transaction signature will appear here."),
         ]
@@ -77,7 +74,7 @@ def manage_button_state(_, amt_input, public_key_state):
         
 
 @app.callback(
-    Output('transaction-button', 'transactionInstructions'),
+    Output('transaction-button-wrapper', 'transactionInstructions'),
     Input('send-sol-button', 'n_clicks'),
     State('solana-wallet', 'publicKeyState'),
     State('amt-input-box', 'value'),
@@ -94,12 +91,16 @@ def update_transaction_data(n_clicks, public_key_state, amount, to_public_key):
 
 @app.callback(
     Output('transaction-signature-display', 'children'),
-    Input('transaction-button', 'transactionSignature'),
+    Input('transaction-button-wrapper', 'transactionSignature'),
 )
 def display_transaction_signature(transaction_signature):
     if not transaction_signature:
         return no_update
     return f"Transaction signature: {transaction_signature}"
+
+# todo: add helius smartSend
+# todo: spinner then checkmark for transaction success
+# in actual app, may want to have a specific dcc store for the tx sig to ensure it doesn't get overwritten by an unintended refresh
 
 if __name__ == '__main__':
     app.run_server(debug=True)
