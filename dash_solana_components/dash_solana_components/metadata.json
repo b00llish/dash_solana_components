@@ -78,7 +78,7 @@
   },
   "src/ts/components/TransactionButtonWrapper.tsx": {
     "displayName": "TransactionButtonWrapper",
-    "description": "A wrapper component for transaction buttons that handles Solana transaction instructions.\n@param {Object} props - The properties for the component.\n@param {string} props.id - The ID of the component.\n@param {string} props.className - The CSS class of the component.\n@param {function} props.setProps - Function to set properties.\n@param {React.ReactNode} props.children - The child components.\n@param {string[] | null} props.transactionInstructions - The transaction instructions in JSON format.\n@param {function(string): void} [props.onTransactionSent] - Callback function when the transaction is sent.\n@returns {JSX.Element} The rendered component.",
+    "description": "A wrapper component for transaction buttons that handles Solana transaction instructions.\n@param {Object} props - The properties for the component.\n@param {string} props.id - The ID of the component.\n@param {string} props.className - The CSS class of the component.\n@param {function} props.setProps - Function to set properties.\n@param {React.ReactNode} props.children - The child components.\n@param {string[] | null} props.transactionInstructions - The transaction instructions in JSON format.\n@returns {JSX.Element} The rendered component.",
     "props": {
       "children": {
         "description": "The child components to be rendered inside the wrapper.",
@@ -106,20 +106,20 @@
           "raw": "string[] | []"
         }
       },
+      "setProps": {
+        "description": "A function to update the component's properties.\n\nDash provides this function and passes it as a prop to the component. This function\nshould be called with an object that contains the new values of the properties that\nyou want to change. This is typically used inside a Dash callback to update the component's properties.\n\nFor example, in our component, we call `setProps` with the new state of the `publicKeyState`\nwhenever the wallet is connected or disconnected. This updates the `publicKeyState` property\nof the component and triggers a Dash callback that listens to this property.\n\n\nUpdate props to trigger callbacks.",
+        "required": true,
+        "type": {
+          "name": "func",
+          "raw": "((props: { transactionSignature?: string; }) => void) & ((props: Record<string, any>) => void)"
+        }
+      },
       "id": {
         "description": "Unique ID to identify this component in Dash callbacks.",
         "required": false,
         "type": {
           "name": "string",
           "raw": "string"
-        }
-      },
-      "setProps": {
-        "description": "Update props to trigger callbacks.",
-        "required": true,
-        "type": {
-          "name": "func",
-          "raw": "(props: Record<string, any>) => void"
         }
       },
       "className": {

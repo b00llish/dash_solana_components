@@ -26,7 +26,7 @@ const TransactionButtonWrapper = ({
     setProps,
     children,
     transactionInstructions,
-}: TransactionButtonWrapperProps) => {
+}: TransactionButtonWrapperProps): JSX.Element => {
     const { connection } = useConnection();
     const { publicKey, sendTransaction } = useWallet();
     const [loading, setLoading] = useState(false);
@@ -93,7 +93,7 @@ const TransactionButtonWrapper = ({
         };
 
         executeTransaction();
-    }, [transactionInstructions, connection, publicKey, sendTransaction, setProps]);
+    }, [transactionInstructions, connection, publicKey, sendTransaction, setProps, executed, setLoading]);
 
     const handleClick = (event) => {
         event.preventDefault();
