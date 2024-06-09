@@ -18,10 +18,8 @@ passed to the transactionInstructions prop.
 
 Keyword arguments:
 
-- children (a list of or a singular dash component, string or number; required):
-    The child components to be rendered inside the wrapper. This
-    should be a single button or other component with \"onClick\"
-    event.
+- children (a list of or a singular dash component, string or number; optional):
+    Content.
 
 - id (string; optional):
     Unique ID to identify this component in Dash callbacks.
@@ -29,7 +27,7 @@ Keyword arguments:
 - className (string; optional):
     Adds CSS class name(s).
 
-- transactionInstructions (list of strings; required):
+- transactionInstructions (list of strings; optional):
     The transaction instructions in JSON format, or an empty list if
     none."""
     _children_props = []
@@ -37,7 +35,7 @@ Keyword arguments:
     _namespace = 'dash_solana_components'
     _type = 'TransactionButtonWrapper'
     @_explicitize_args
-    def __init__(self, children=None, transactionInstructions=Component.REQUIRED, id=Component.UNDEFINED, className=Component.UNDEFINED, **kwargs):
+    def __init__(self, children=None, transactionInstructions=Component.UNDEFINED, id=Component.UNDEFINED, className=Component.UNDEFINED, **kwargs):
         self._prop_names = ['children', 'id', 'className', 'transactionInstructions']
         self._valid_wildcard_attributes =            []
         self.available_properties = ['children', 'id', 'className', 'transactionInstructions']
@@ -46,13 +44,5 @@ Keyword arguments:
         _locals = locals()
         _locals.update(kwargs)  # For wildcard attrs and excess named props
         args = {k: _locals[k] for k in _explicit_args if k != 'children'}
-
-        for k in ['transactionInstructions']:
-            if k not in args:
-                raise TypeError(
-                    'Required argument `' + k + '` was not specified.')
-
-        if 'children' not in _explicit_args:
-            raise TypeError('Required argument children was not specified.')
 
         super(TransactionButtonWrapper, self).__init__(children=children, **args)

@@ -15,8 +15,7 @@ transactionInstructions=NULL)
 }
 
 \arguments{
-\item{children}{A list of or a singular dash component, string or number. The child components to be rendered inside the wrapper.
-This should be a single button or other component with "onClick" event.}
+\item{children}{A list of or a singular dash component, string or number. Content}
 
 \item{id}{Character. Unique ID to identify this component in Dash callbacks.}
 

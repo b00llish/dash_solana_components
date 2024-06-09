@@ -20,11 +20,10 @@ passed to the transactionInstructions prop.
 @param {string[] | null} props.transactionInstructions - The transaction instructions in JSON format.
 @returns {JSX.Element} The rendered component.
 Keyword arguments:
-- `children` (a list of or a singular dash component, string or number; required): The child components to be rendered inside the wrapper.
-This should be a single button or other component with "onClick" event.
+- `children` (a list of or a singular dash component, string or number; optional): Content
 - `id` (String; optional): Unique ID to identify this component in Dash callbacks.
 - `className` (String; optional): Adds CSS class name(s).
-- `transactionInstructions` (Array of Strings; required): The transaction instructions in JSON format, or an empty list if none.
+- `transactionInstructions` (Array of Strings; optional): The transaction instructions in JSON format, or an empty list if none.
 """
 function dsc_transactionbuttonwrapper(; kwargs...)
         available_props = Symbol[:children, :id, :className, :transactionInstructions]

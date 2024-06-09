@@ -80,17 +80,13 @@
     "displayName": "TransactionButtonWrapper",
     "description": "A wrapper component for transaction buttons that handles Solana transaction instructions.\nA button can be clicked to send a transaction to the Solana network, using the instructions\npassed to the transactionInstructions prop.\n@param {Object} props - The properties for the component.\n@param {string} props.id - The ID of the component.\n@param {string} props.className - The CSS class of the component.\n@param {function} props.setProps - Function to set properties.\n@param {React.ReactNode} props.children - The child components. This should be a single button or any component that has an \"onClick\" event.\n@param {string[] | null} props.transactionInstructions - The transaction instructions in JSON format.\n@returns {JSX.Element} The rendered component.",
     "props": {
-      "children": {
-        "description": "The child components to be rendered inside the wrapper.\nThis should be a single button or other component with \"onClick\" event.",
-        "required": true,
-        "type": {
-          "name": "node",
-          "raw": "ReactNode"
-        }
-      },
       "transactionInstructions": {
         "description": "The transaction instructions in JSON format, or an empty list if none.",
-        "required": true,
+        "required": false,
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        },
         "type": {
           "name": "union",
           "value": [
@@ -106,12 +102,16 @@
           "raw": "string[] | []"
         }
       },
-      "setProps": {
-        "description": "A function to update the component's properties.\nThis is used internally by the component and should not be called directly.\n\n\nUpdate props to trigger callbacks.",
-        "required": true,
+      "children": {
+        "description": "Content",
+        "required": false,
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        },
         "type": {
-          "name": "func",
-          "raw": "((props: { transactionSignature?: string; }) => void) & ((props: Record<string, any>) => void)"
+          "name": "node",
+          "raw": "ReactNode"
         }
       },
       "id": {
@@ -120,6 +120,14 @@
         "type": {
           "name": "string",
           "raw": "string"
+        }
+      },
+      "setProps": {
+        "description": "Update props to trigger callbacks.",
+        "required": true,
+        "type": {
+          "name": "func",
+          "raw": "(props: Record<string, any>) => void"
         }
       },
       "className": {

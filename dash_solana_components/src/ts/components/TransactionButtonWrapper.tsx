@@ -101,6 +101,11 @@ const TransactionButtonWrapper = ({
                 setProps({ transactionSignature: signature });
             } catch (error) {
                 console.error("Transaction failed:", error);
+
+                if (error.message === "User rejected the request.") {
+                    console.log("User cancelled the transaction.");
+                    setProps({ transactionInstructions: [] });
+                }
             } finally {
                 setLoading(false);
                 setExecuted(false);
@@ -129,8 +134,6 @@ const TransactionButtonWrapper = ({
             className={className}
             onClick={handleClick}
             style={{
-                position: "relative",
-                display: "contents",
                 pointerEvents: loading ? "none" : "auto",
                 opacity: loading ? 0.5 : 1,
             }}
@@ -138,6 +141,11 @@ const TransactionButtonWrapper = ({
             {children}
         </div>
     );
+};
+
+TransactionButtonWrapper.defaultProps = {
+    transactionInstructions: [],
+    children: [],
 };
 
 export default TransactionButtonWrapper;

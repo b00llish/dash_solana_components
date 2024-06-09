@@ -53,7 +53,7 @@
 //             web3.ComputeBudgetProgram.setComputeUnitLimit({ units: 1_400_000 }),
 //             ...instructions,
 //         ];
-        
+
 //         const testTransaction = new web3.VersionedTransaction(
 //             new web3.TransactionMessage({
 //                 instructions: testInstructions,
@@ -61,16 +61,16 @@
 //                 recentBlockhash: (await this.connection.getLatestBlockhash()).blockhash,
 //             }).compileToV0Message(lookupTables)
 //         );
-        
+
 //         const rpcResponse = await this.connection.simulateTransaction(testTransaction, {
 //             replaceRecentBlockhash: true,
 //             sigVerify: false,
 //         });
-        
+
 //         const unitsConsumed = rpcResponse.value.unitsConsumed;
 //         const signature = await helius.rpc.sendSmartTransaction(
 //             instructions,
-            
+
 //         );
 //         console.log("Transaction signature:", signature);
 
