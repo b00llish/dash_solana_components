@@ -1,9 +1,9 @@
 # AUTO GENERATED FILE - DO NOT EDIT
 
 #' @export
-dscSolanaWalletMultiButton <- function(id=NULL, className=NULL, network=NULL, publicKeyState=NULL, rpcEndpoint=NULL) {
+dscSolanaWalletMultiButton <- function(children=NULL, id=NULL, className=NULL, disabled=NULL, endIcon=NULL, network=NULL, onClick=NULL, publicKeyState=NULL, rpcEndpoint=NULL, startIcon=NULL, style=NULL, tabIndex=NULL) {
     
-    props <- list(id=id, className=className, network=network, publicKeyState=publicKeyState, rpcEndpoint=rpcEndpoint)
+    props <- list(children=children, id=id, className=className, disabled=disabled, endIcon=endIcon, network=network, onClick=onClick, publicKeyState=publicKeyState, rpcEndpoint=rpcEndpoint, startIcon=startIcon, style=style, tabIndex=tabIndex)
     if (length(props) > 0) {
         props <- props[!vapply(props, is.null, logical(1))]
     }
@@ -11,7 +11,7 @@ dscSolanaWalletMultiButton <- function(id=NULL, className=NULL, network=NULL, pu
         props = props,
         type = 'SolanaWalletMultiButton',
         namespace = 'dash_solana_components',
-        propNames = c('id', 'className', 'network', 'publicKeyState', 'rpcEndpoint'),
+        propNames = c('children', 'id', 'className', 'disabled', 'endIcon', 'network', 'onClick', 'publicKeyState', 'rpcEndpoint', 'startIcon', 'style', 'tabIndex'),
         package = 'dashSolanaComponents'
         )
 

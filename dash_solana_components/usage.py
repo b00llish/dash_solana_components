@@ -37,7 +37,21 @@ app.layout = dsc.WalletContextProvider(
     children=html.Div(
         [
             dcc.Interval(id='interval', interval=1000, max_intervals=1),
-            html.Div(dsc.SolanaWalletMultiButton(id='solana-wallet', network='mainnet', rpcEndpoint=helius_rpc)),
+            html.Div(dsc.SolanaWalletMultiButton(
+                id='solana-wallet',
+                network='mainnet',
+                rpcEndpoint=helius_rpc,
+                # children=html.Button(
+                #     # 'Connect wallet',
+                #                      id='connect-wallet-button',
+                #                     #  disabled=True,
+                #                      style={
+                #                             # "display": "flex",
+                #                             "justifyContent": "center",
+                #                             # "alignItems": "center",
+                #                         }),
+                )
+                     ),
             html.Div(id='public-key-display', children="Not connected."),
             html.Div(children=[dcc.Input(id='amt-input-box', type='number', value='0.1', min=0, step=1/LAMPORTS_PER_SOL)]),
             html.Div(children=[dcc.Input(id='to-pubkey-input-box', type='text', value='FTZbJxyv3QPFMHfqdUaqVLDcNuhsVpGaSZGWiEaDqFDx')]),

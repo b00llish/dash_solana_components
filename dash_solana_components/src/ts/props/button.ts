@@ -1,4 +1,7 @@
+// button.ts
+
 import { DashBaseProps } from "./dash";
+import { AdapterButtonProps } from "./adapterButton";
 
 /**
  * Define component properties.
@@ -44,4 +47,5 @@ export type MultiButtonProps = {
         publicKeyState?: string;
         rpcEndpoint?: string;
     }) => void;
-} & DashBaseProps;
+} & DashBaseProps &
+    AdapterButtonProps;

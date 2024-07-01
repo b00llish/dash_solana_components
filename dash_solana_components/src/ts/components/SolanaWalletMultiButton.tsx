@@ -1,3 +1,5 @@
+// SolanaWalletMultiButton.tsx
+
 /**
  * This file contains a React component for a Solana Wallet Multi Button, which provides
  * an interface to interact with different Solana wallets and return a public key when connected.
@@ -8,20 +10,22 @@
 import React, { useState } from "react";
 import { MultiButtonProps } from "../props/button";
 import { Content } from "../helpers/Content";
+import { AdapterButtonProps } from "../props/adapterButton";
 
 // Import required stylesheets
 // require('./SolanaWalletMultiButton.css');
+// https://github.com/anza-xyz/wallet-adapter/blob/master/packages/ui/react-ui/styles.css
 require("@solana/wallet-adapter-react-ui/styles.css");
 
 /**
  * SolanaWalletMultiButton.
  * Requires use of the WalletContextProvider to provide wallet connections.
  */
-const SolanaWalletMultiButton: (props: MultiButtonProps) => JSX.Element = (
-    props: MultiButtonProps
-) => {
+const SolanaWalletMultiButton: (
+    props: MultiButtonProps & AdapterButtonProps
+) => JSX.Element = (props: MultiButtonProps & AdapterButtonProps) => {
     // Destructure the props to extract the id, network, and setProps properties.
-    const { id, className, rpcEndpoint, setProps } = props;
+    const { id, className, rpcEndpoint, setProps, ...buttonProps } = props;
 
     // Define a callback function to update the public key.
     // This function will be passed to the Context and Content components, and will be called whenever the public key changes.
@@ -36,10 +40,13 @@ const SolanaWalletMultiButton: (props: MultiButtonProps) => JSX.Element = (
     return (
         // Wrap everything in a div and assign it the id prop.
         // This id will be used to identify the component in Dash callbacks.
-        <div id={id} className={className}>
+        <div id={id} className={`SolanaWalletMultiButton ${className}`}>
             {/* Use the Content component to display the WalletMultiButton and handle the wallet connection.
                 Pass the handlePublicKeyUpdate function as a prop. */}
-            <Content onPublicKeyUpdate={handlePublicKeyUpdate} />
+            <Content
+                onPublicKeyUpdate={handlePublicKeyUpdate}
+                buttonProps={buttonProps}
+            />
         </div>
     );
 };
